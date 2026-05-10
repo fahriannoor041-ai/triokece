@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengudara Bersamamu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            /* Background Langit Biru */
+            background: linear-gradient(to bottom, #7dd3fc 0%, #e0f2fe 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Efek Kartu Melayang */
+        .music-card {
+            width: 360px;
+            height: 650px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            z-index: 10;
+            animation: floatCard 4s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .scroll-content {
+            overflow-y: auto;
+            flex-grow: 1;
+            padding: 20px;
+            scroll-behavior: smooth;
+        }
+        .scroll-content::-webkit-scrollbar { width: 0px; }
+
+        .img-frame {
+            width: 100%;
+            height: 220px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            border: 3px solid white;
+        }
+        .img-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+        .message-text {
+            font-size: 0.9rem;
+            color: #0369a1;
+            text-align: center;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* Elemen Mengudara (Awan & Pesawat Kertas) */
+        .cloud {
+            position: fixed;
+            color: white;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.8;
+            animation: flyRight linear infinite;
+        }
+
+        @keyframes flyRight {
+            0% { transform: translateX(-10vw); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateX(110vw); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="laguKejutan" src="trio kece/mengudara.m4a" autoplay></audio>
+
+    <div class="music-card">
+        <div class="p-6 text-center border-b border-blue-100">
+            <h2 class="text-xl font-bold text-sky-600 tracking-widest uppercase">Mengudara</h2>
+            <p class="text-xs text-sky-400">Terbang lebih tinggi bersamamu...</p>
+        </div>
+
+        <div class="scroll-content">
+            <div data-aos="fade-up">
+                <div class="img-frame">
+                    <img src="trio kece/osim.jpg" alt="Memory 1">
+                </div>
+                <p class="message-text">"Seperti awan yang bebas di langit, aku ingin kita terus mengudara tanpa beban."</p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="200">
+                <div class="img-frame">
+                    <img src="trio kece/tim.jpg" alt="Memory 2">
+                </div>
+                <p class="message-text">"Terima kasih sudah menjadi sayap yang membantuku terbang saat aku hampir jatuh."</p>
+            </div>
+
+            <div class="mt-4 pb-10" data-aos="zoom-in">
+                <div class="text-center text-sky-500 mb-4 text-2xl">
+                    <i class="fas fa-paper-plane animate-bounce"></i>
+                </div>
+                
+                <h3 class="text-lg font-bold text-sky-600 text-center mb-2">Selamat Mengangkasa!</h3>
+                <p class="message-text mb-6">"Semoga doa-doa kita menembus langit dan menjadi nyata satu per satu."</p>
+
+                <div class="bg-sky-50 p-4 rounded-2xl border border-sky-100 mx-2 text-center">
+                    <p class="text-xs text-sky-400 font-bold uppercase tracking-widest mb-2">Pesan Dari Angkasa</p>
+                    <p class="message-text !mb-0">"Terima kasih untuk segalanya. Jaga diri di bumi, sampai kita terbang bersama lagi."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 bg-white/50">
+            <a href="index.html" class="flex items-center justify-center bg-sky-500 text-white py-3 rounded-2xl shadow-lg font-semibold hover:bg-sky-600 transition-all">
+                <i class="fas fa-cloud mr-2"></i> Kembali mendarat
+            </a>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: true });
+
+        // Script Animasi Awan & Pesawat Kertas Melintas
+        function createCloud() {
+            const cloud = document.createElement('div');
+            cloud.classList.add('cloud');
+            
+            // Acak antara ikon awan atau pesawat kertas
+            const icons = ['fa-cloud', 'fa-paper-plane', 'fa-wind'];
+            const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+            
+            cloud.innerHTML = `<i class="fas ${randomIcon}"></i>`;
+            cloud.style.top = Math.random() * 100 + "vh";
+            cloud.style.fontSize = Math.random() * 20 + 20 + "px";
+            cloud.style.animationDuration = Math.random() * 5 + 10 + "s"; // Lambat seperti awan
+            
+            document.body.appendChild(cloud);
+            setTimeout(() => { cloud.remove(); }, 15000);
+        }
+        setInterval(createCloud, 2000);
+
+        // Audio Autoplay
+        const audio = document.getElementById('laguKejutan');
+        window.addEventListener('load', () => {
+            audio.play().catch(() => {
+                document.body.addEventListener('click', () => { audio.play(); }, { once: true });
+            });
+        });
+    </script>
+</body>
+</html>

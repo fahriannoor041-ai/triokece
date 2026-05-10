@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerita Ellyn - Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            /* Background gradasi pink lembut */
+            background: linear-gradient(135deg, #fce7f3 0%, #f3f4f6 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .music-card {
+            width: 350px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+        .image-container {
+            width: 90%;
+            height: 250px;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #f472b6; /* Garis tepi pink pada foto */
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .back-btn {
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            transform: translateY(-2px);
+            background-color: #db2777; /* Warna pink lebih gelap saat hover */
+        }
+        /* Custom Scrollbar untuk pesan panjang agar kartu tetap rapi */
+        .message-box {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .message-box::-webkit-scrollbar {
+            width: 4px;
+        }
+        .message-box::-webkit-scrollbar-thumb {
+            background: #f472b6;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="music-card">
+        <div class="image-container">
+            <img src="trio%20kece/ellyn.jpg" alt="Foto Ellyn">
+        </div>
+
+        <div class="info mt-2">
+            <h1 class="text-xl font-bold text-gray-800">Mambagal</h1>
+            <p class="text-pink-500 font-semibold text-sm">si paling imut dan pemarah</p>
+        </div>
+
+        <div class="controls flex justify-center items-center gap-8 my-4 text-2xl text-gray-700">
+            <i class="fas fa-backward opacity-30"></i>
+            <i class="fas fa-play text-4xl text-pink-400 cursor-pointer" id="playBtn"></i>
+            <i class="fas fa-forward opacity-30"></i>
+        </div>
+
+        <audio id="myAudio" src="trio%20kece/mambagal.m4a"></audio>
+
+        <hr class="w-4/5 mx-auto border-pink-100">
+
+        <div class="message-box p-6 italic text-pink-700 text-sm leading-relaxed text-center">
+            <p class="mb-4 text-pink-600 font-bold">Happy Special Day! 🌸</p>
+            <p>
+                "Selamat atas hari spesialmu! Doaku tulus untukmu, semoga setiap langkah yang kamu ambil selalu diberkahi, diberikan kemudahan dalam segala urusan, dan kebahagiaan selalu menyelimuti harimu. 
+                <br><br>
+                Terima kasih banyak sudah menjadi bagian dari perjalanan dan cerita ini. Maafkan aku ya kalau selama ini ada salah kata, perbuatan, atau sikap yang mungkin menyakiti hatimu, sungguh itu semua tak sengaja. 
+                <br><br>
+                Setiap pertemuan pasti menemui ujungnya, dan mungkin ini saatnya kita melangkah di jalan masing-masing. Selamat tinggal, ka Ellyn. Teruslah tumbuh menjadi pribadi yang hebat dan jangan pernah berhenti mengejar mimpimu. Terima kasih untuk semua kenangan manisnya."
+            </p>
+        </div>
+
+        <div class="pb-8 px-8">
+            <a href="index.html" class="back-btn block bg-pink-500 text-white text-sm py-3 rounded-xl shadow-md font-medium">
+                <i class="fas fa-arrow-left mr-2"></i> Kembali ke Beranda
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const playBtn = document.getElementById('playBtn');
+        const audio = document.getElementById('myAudio');
+
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playBtn.classList.replace('fa-play', 'fa-pause');
+            } else {
+                audio.pause();
+                playBtn.classList.replace('fa-pause', 'fa-play');
+            }
+        });
+    </script>
+</body>
+</html>

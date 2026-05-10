@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerita Yana - Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #7dd3fc 0%, #e0f2fe 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .music-card {
+            width: 350px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+            border: 1px solid white;
+        }
+        .image-container {
+            width: 90%;
+            height: 250px;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 3px solid white;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .back-btn {
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            transform: translateY(-2px);
+            background-color: #0369a1;
+        }
+        /* Custom Scrollbar untuk pesan panjang */
+        .message-box {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .message-box::-webkit-scrollbar {
+            width: 4px;
+        }
+        .message-box::-webkit-scrollbar-thumb {
+            background: #7dd3fc;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="music-card">
+        <div class="image-container">
+            <img src="trio%20kece/yana.jpg" alt="Foto Yana">
+        </div>
+
+        <div class="info mt-2">
+            <h1 class="text-xl font-bold text-gray-800">Perempuan Gila</h1>
+            <p class="text-sky-500 font-semibold text-sm">si paling netral, suka nyanyi hehe</p>
+        </div>
+
+        <div class="controls flex justify-center items-center gap-8 my-4 text-2xl text-gray-700">
+            <i class="fas fa-backward opacity-30"></i>
+            <i class="fas fa-play text-4xl text-sky-500 cursor-pointer" id="playBtn"></i>
+            <i class="fas fa-forward opacity-30"></i>
+        </div>
+
+        <audio id="myAudio" src="trio%20kece/perempuangila.m4a"></audio>
+
+        <hr class="w-4/5 mx-auto border-blue-50">
+
+        <div class="message-box p-6 italic text-gray-500 text-sm leading-relaxed text-center">
+            <p class="mb-4 text-sky-600 font-bold">Happy Special Day! ✨</p>
+            <p>
+                "Selamat atas hari spesialmu! Doaku semoga langkahmu selalu diringi kemudahan, hatimu selalu dijaga dalam kebahagiaan, dan semua mimpi yang kamu langitkan segera menjadi nyata. 
+                <br><br>
+                Aku ingin berterima kasih karena kamu sudah menjadi bagian dari cerita ini. Maafkan aku jika selama kita bersama ada kata-kata yang menyakiti atau sikap yang kurang berkenan, sungguh tak ada niat sedikitpun untuk itu. 
+                <br><br>
+                Meski sekarang kita harus melangkah di jalan masing-masing, ingatlah bahwa setiap kenangan yang kita buat adalah harta yang takkan luntur. Selamat tinggal ka YANA, jaga dirimu baik-baik di luar sana. Sampai bertemu lagi di bab kehidupan yang lebih indah."
+            </p>
+        </div>
+
+        <div class="pb-8 px-8">
+            <a href="index.html" class="back-btn block bg-sky-600 text-white text-sm py-3 rounded-xl shadow-md font-medium">
+                <i class="fas fa-arrow-left mr-2"></i> Kembali ke Beranda
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const playBtn = document.getElementById('playBtn');
+        const audio = document.getElementById('myAudio');
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playBtn.classList.replace('fa-play', 'fa-pause');
+            } else {
+                audio.pause();
+                playBtn.classList.replace('fa-pause', 'fa-play');
+            }
+        });
+    </script>
+</body>
+</html>

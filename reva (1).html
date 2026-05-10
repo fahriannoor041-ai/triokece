@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerita Reva - Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ccfbf1 0%, #f3f4f6 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .music-card {
+            width: 350px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+        .image-container {
+            width: 90%;
+            height: 250px;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #2dd4bf;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .back-btn {
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            transform: translateY(-2px);
+            background-color: #0d9488;
+        }
+        /* Custom Scrollbar */
+        .message-box {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .message-box::-webkit-scrollbar {
+            width: 4px;
+        }
+        .message-box::-webkit-scrollbar-thumb {
+            background: #2dd4bf;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="music-card">
+        <div class="image-container">
+            <img src="trio%20kece/reva.jpg" alt="Foto Reva">
+        </div>
+
+        <div class="info mt-2">
+            <h1 class="text-xl font-bold text-gray-800">Bukti</h1>
+            <p class="text-teal-500 font-semibold text-sm">Pemarah tapi hati nya baik</p>
+        </div>
+
+        <div class="controls flex justify-center items-center gap-8 my-4 text-2xl text-gray-700">
+            <i class="fas fa-backward opacity-30"></i>
+            <i class="fas fa-play text-4xl text-teal-400 cursor-pointer" id="playBtn"></i>
+            <i class="fas fa-forward opacity-30"></i>
+        </div>
+
+        <audio id="myAudio" src="trio%20kece/bukti.m4a"></audio>
+
+        <hr class="w-4/5 mx-auto border-gray-100">
+
+        <div class="message-box p-6 italic text-teal-700 text-sm leading-relaxed text-center">
+            <p class="mb-4 text-teal-600 font-bold">Barakallah & Happy Day! 🌿</p>
+            <p>
+                "Hari ini adalah milikmu, selamat ya! Aku selalu mendoakan yang terbaik untukmu; semoga kesehatan, kesuksesan, dan keberkahan selalu menyertaimu di setiap detiknya. 
+                <br><br>
+                Terima kasih sudah mengizinkanku menjadi salah satu orang yang hadir di hidupmu. Maaf ya kalau aku punya banyak salah kata atau perbuatan yang membuatmu tidak nyaman, aku hanya manusia biasa yang penuh luput. 
+                <br><br>
+                Setiap pertemuan pasti ada perpisahan, dan kini saatnya aku pamit. Selamat tinggal, ka Reva. Teruslah bersinar dan jangan pernah menyerah pada keadaan. Terima kasih untuk segalanya, aku pergi dengan membawa kenangan manis kita."
+            </p>
+        </div>
+
+        <div class="pb-8 px-8">
+            <a href="index.html" class="back-btn block bg-teal-600 text-white text-sm py-3 rounded-xl shadow-md font-medium">
+                <i class="fas fa-arrow-left mr-2"></i> Kembali ke Beranda
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const playBtn = document.getElementById('playBtn');
+        const audio = document.getElementById('myAudio');
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playBtn.classList.replace('fa-play', 'fa-pause');
+            } else {
+                audio.pause();
+                playBtn.classList.replace('fa-pause', 'fa-play');
+            }
+        });
+    </script>
+</body>
+</html>

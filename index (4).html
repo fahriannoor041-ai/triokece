@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player Navigation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .music-card {
+            width: 350px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+        .image-container {
+            width: 90%;
+            height: 250px;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Style tombol navigasi */
+        .nav-btn {
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            transform: scale(1.05);
+            filter: brightness(90%);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="music-card">
+        <div class="image-container">
+            <img src="trio kece/seragam.jpg" alt="Foto">
+        </div>
+
+        <div class="info mt-2">
+            <h1 class="text-xl font-bold text-gray-800">Everything U Are</h1>
+            <p class="text-green-500 font-semibold text-sm">always together</p>
+        </div>
+
+        <div class="controls flex justify-center items-center gap-8 my-4 text-2xl text-gray-700">
+            <i class="fas fa-backward cursor-pointer"></i>
+            <i class="fas fa-play text-4xl text-green-500 cursor-pointer" id="playBtn"></i>
+            <i class="fas fa-forward cursor-pointer"></i>
+        </div>
+
+        <div class="flex justify-center gap-3 px-4 mb-4">
+            <a href="reva.html" class="nav-btn bg-green-400 text-white text-xs py-2 px-4 rounded-full shadow-md">REVA</a>
+            <a href="ellyn.html" class="nav-btn bg-pink-400 text-white text-xs py-2 px-4 rounded-full shadow-md">ELLYN</a>
+            <a href="yana.html" class="nav-btn bg-blue-400 text-white text-xs py-2 px-4 rounded-full shadow-md">YANA</a>
+        </div>
+
+        <audio id="myAudio" src="trio kece/everything.m4a"></audio>
+
+        <hr class="w-4/5 mx-auto border-gray-100">
+
+        <div class="message p-4 italic text-gray-500 text-xs leading-relaxed">
+            <p>"Terima kasih sudah menjadi bagian dari hidupku. Semoga kita selalu bisa saling mendukung dan menjadi sumber kebahagiaan satu sama lain. Selamat tinggal, kaka kakku. jangan lupa jaga kesehatan ya,,,,"</p>
+        </div>
+
+        <div class="pb-6 px-6">
+            <a href="kejutan.html" class="nav-btn block bg-gray-800 text-white text-sm py-3 rounded-xl shadow-lg">
+                <i class="fas fa-heart mr-2"></i> Klik untuk Kejutan
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const playBtn = document.getElementById('playBtn');
+        const audio = document.getElementById('myAudio');
+
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playBtn.classList.replace('fa-play', 'fa-pause');
+            } else {
+                audio.pause();
+                playBtn.classList.replace('fa-pause', 'fa-play');
+            }
+        });
+    </script>
+</body>
+</html>
